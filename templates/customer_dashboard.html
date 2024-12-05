@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Dashboard{% endblock %}
+
+{% block content %}
+<h3 class="text-3xl font-bold mb-4">Welcome to Your Dashboard</h3>
+
+<h4 class="text-2xl font-semibold mb-4">Available Products</h4>
+<div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-300">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="py-2 px-4 border border-gray-300">Image</th>
+                <th class="py-2 px-4 border border-gray-300">Product</th>
+                <th class="py-2 px-4 border border-gray-300">Category</th>
+                <th class="py-2 px-4 border border-gray-300">Price</th>
+                <th class="py-2 px-4 border border-gray-300">Quantity</th>
+                <th class="py-2 px-4 border border-gray-300">Supplier</th>
+                <th class="py-2 px-4 border border-gray-300">Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr class="hover:bg-gray-50">
+                <td class="py-2 px-4 border border-gray-300">
+                    {% if product.image_url %}
+                        <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}" class="w-16 h-16 object-cover rounded">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                <td class="py-2 px-4 border border-gray-300">{{ product.name }}</td>
+                <td class="py-2 px-4 border border-gray-300">{{ product.category }}</td>
+                <td class="py-2 px-4 border border-gray-300">{{ product.price }}</td>
+                <td class="py-2 px-4 border border-gray-300">{{ product.quantity }}</td>
+                <td class="py-2 px-4 border border-gray-300">{{ product.supplier }}</td>
+                <td class="py-2 px-4 border border-gray-300">
+                    {% if product.quantity > 0 %}
+                    <form method="POST" class="flex items-center">
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="number" name="quantity" min="1" max="{{ product.quantity }}" class="w-16 p-2 border border-gray-300 rounded" required>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded ml-2">Order</button>
+                    </form>
+                    {% else %}
+                    <p class="text-red-500">Out of stock</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

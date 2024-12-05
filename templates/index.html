@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center my-8">
+    <h1 class="text-4xl font-bold mb-4">Welcome to the Inventory Management System</h1>
+    <p class="text-lg mb-6">Manage inventory efficiently with admin and customer dashboards.</p>
+    <a href="{{ url_for('login') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2">Login</a>
+    <a href="{{ url_for('signup') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Signup</a>
+</div>
+
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
+            <img class="h-32 w-32 mx-auto rounded-full" src="https://via.placeholder.com/150" alt="Admin Dashboard">
+            <h2 class="text-center text-xl font-medium text-black">Admin Dashboard</h2>
+            <p class="text-gray-500">Manage products, view low stock alerts, and refill or remove inventory items.</p>
+        </div>
+        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
+            <img class="h-32 w-32 mx-auto rounded-full" src="https://via.placeholder.com/150" alt="Customer Dashboard">
+            <h2 class="text-center text-xl font-medium text-black">Customer Dashboard</h2>
+            <p class="text-gray-500">Browse available products, place orders, and view your order history.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center my-8">Why Choose Us?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
+            <h3 class="text-center text-xl font-medium text-black">Efficiency</h3>
+            <p class="text-gray-500">Our system helps you manage your inventory efficiently, saving you time and resources.</p>
+        </div>
+        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
+            <h3 class="text-center text-xl font-medium text-black">User-Friendly</h3>
+            <p class="text-gray-500">Easy to use interfaces for both admins and customers, ensuring a smooth experience for everyone.</p>
+        </div>
+        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
+            <h3 class="text-center text-xl font-medium text-black">Real-Time Updates</h3>
+            <p class="text-gray-500">Stay updated with real-time alerts and notifications about your inventory status.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

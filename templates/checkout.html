@@ -1,0 +1,16 @@
+<h3 class="text-3xl font-bold mb-4">Checkout</h3>
+<form method="POST" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow">
+    <div class="mb-4">
+        <label for="product" class="block text-gray-700">Product:</label>
+        <select name="product_id" id="product" class="w-full p-2 border border-gray-300 rounded">
+            {% for product in products %}
+                <option value="{{ product['id'] }}">{{ product['name'] }} ({{ product['quantity'] }} available)</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="quantity" class="block text-gray-700">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" required class="w-full p-2 border border-gray-300 rounded">
+    </div>
+    <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Place Order</button>
+</form>
